@@ -51,7 +51,6 @@ int unStack(struct stack* s){
     return element;
 }
 
-
 int main(){
     struct stack * my_stack = create();
     stackUp(my_stack,1);
