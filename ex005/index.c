@@ -63,19 +63,42 @@ int sizeOf(struct stack* p){
     return p->size;
 }
 
+
+bool emptyStack(struct stack*p){
+    assert(p !=NULL);
+    return(p->top == NULL);
+}
+
+void liberateStack(struct stack*p){
+    assert( p != NULL);
+    while (emptyStack(p) == false)
+    {
+        unStack(p);
+    }
+    
+}
+
 int main(){
     struct stack * my_stack = create();
-     int num;
-     for (int i = 0; i < 5; i++)
-     {
-        printf("\n  Insert one int number :");
-        scanf("%d",&num);
-        stackUp(my_stack,num);
-     }
 
-     for (int i = 0; i < 5; i++)
-     {
-       printf("%d ",unStack(my_stack));
-     }  
+    printf("\n Is empty (1-yes ; 0-no)? %d\n",emptyStack(my_stack));
+        printf("Stack uping 1...\n");
+        stackUp(my_stack,1);
+        printf("Stack uping 2...\n");
+        stackUp(my_stack,2);
+        printf("Stack uping 3..");
+        stackUp(my_stack,3);
+
+    printf("\n Is empty (1-yes ; 0-no)? %d\n",emptyStack(my_stack));
+    
+    printf("Top = %d\n",topOf(my_stack));
+    printf("Size = %d\n",sizeOf(my_stack));
+
+    printf("Unstack the elemets : ");
+    printf("%d ",unStack(my_stack));
+    printf("%d ",unStack(my_stack));
+    printf("%d ",unStack(my_stack));
+
+    liberateStack(my_stack);
     return 0 ;
 }
